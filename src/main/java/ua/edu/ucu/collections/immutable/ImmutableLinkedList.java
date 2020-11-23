@@ -205,7 +205,4 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         return createJoined(size - 1, size, new Object[]{});
     }
-
 }
-
-

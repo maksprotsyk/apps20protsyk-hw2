@@ -7,7 +7,6 @@ import java.util.Arrays;
 public class ImmutableArrayList implements ImmutableList {
     private final Object[] items;
 
-
     public ImmutableArrayList() {
         items = new Object[0];
     }
