@@ -1,7 +1,6 @@
 package ua.edu.ucu.collections;
 
 import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
-import ua.edu.ucu.collections.immutable.ImmutableList;
 
 public class Stack {
     private ImmutableLinkedList items;
@@ -25,7 +24,7 @@ public class Stack {
         items = items.addLast(item);
     }
 
-    public int size(){
+    public int size() {
         return items.size();
     }
 

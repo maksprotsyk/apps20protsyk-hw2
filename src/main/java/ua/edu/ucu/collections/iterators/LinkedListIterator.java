@@ -1,11 +1,11 @@
 package ua.edu.ucu.collections.iterators;
 
-import ua.edu.ucu.collections.linked_structures.Node;
+import ua.edu.ucu.collections.linked.structures.Node;
 
 
 public class LinkedListIterator implements Iterator {
-    Node head;
-    Node currNode;
+    private Node head;
+    private Node currNode;
 
     public LinkedListIterator(Node initHead) {
         currNode = initHead;

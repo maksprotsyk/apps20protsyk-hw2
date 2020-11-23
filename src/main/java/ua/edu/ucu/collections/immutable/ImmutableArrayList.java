@@ -3,10 +3,9 @@ package ua.edu.ucu.collections.immutable;
 
 import java.util.Arrays;
 
-import static java.util.Arrays.copyOf;
 
-public class ImmutableArrayList implements ImmutableList{
-    final private Object[] items;
+public class ImmutableArrayList implements ImmutableList {
+    private final Object[] items;
 
 
     public ImmutableArrayList() {
@@ -32,8 +31,9 @@ public class ImmutableArrayList implements ImmutableList{
         return newItems;
     }
 
-    private void validateIndex(int index) throws ArrayIndexOutOfBoundsException {
-        if (index < 0 || index >= items.length){
+    private void validateIndex(int index)
+            throws ArrayIndexOutOfBoundsException {
+        if (index < 0 || index >= items.length) {
             throw new ArrayIndexOutOfBoundsException();
         }
     }
@@ -97,7 +97,7 @@ public class ImmutableArrayList implements ImmutableList{
     }
 
     public Object[] toArray() {
-        return copyOf(items, items.length);
+        return Arrays.copyOf(items, items.length);
     }
 
     @Override

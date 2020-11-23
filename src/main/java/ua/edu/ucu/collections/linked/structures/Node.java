@@ -1,4 +1,4 @@
-package ua.edu.ucu.collections.linked_structures;
+package ua.edu.ucu.collections.linked.structures;
 
 public class Node {
     private Object item;
