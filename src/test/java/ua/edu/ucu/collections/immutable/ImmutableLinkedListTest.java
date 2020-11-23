@@ -21,7 +21,7 @@ public class ImmutableLinkedListTest extends ImmutableArrayListTest {
     @Test
     public void testGetLast(){
         ImmutableLinkedList testList = notEmptyLinked.addAll(new Object[] {1, 2, 3});
-        assertEquals(testList.getLast(), 3);
+        assertEquals(3, testList.getLast());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -37,15 +37,15 @@ public class ImmutableLinkedListTest extends ImmutableArrayListTest {
     @Test
     public void testGetFirst(){
         ImmutableLinkedList testList = notEmptyLinked.addAll(new Object[] {1, 2, 3});
-        assertEquals(notEmptyLinked.size(), 1);
-        assertEquals(testList.getFirst(), notEmptyElem);
+        assertEquals(1, notEmptyLinked.size());
+        assertEquals(notEmptyElem, testList.getFirst());
     }
 
     @Test
     public void testRemoveFirst(){
         ImmutableLinkedList testList = notEmptyLinked.removeFirst();
-        assertEquals(notEmptyLinked.size(), 1);
-        assertEquals(testList.size(), notEmpty.size() - 1);
+        assertEquals(1, notEmptyLinked.size());
+        assertEquals(notEmpty.size() - 1, testList.size());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -56,8 +56,8 @@ public class ImmutableLinkedListTest extends ImmutableArrayListTest {
     @Test
     public void testRemoveLast(){
         ImmutableLinkedList testList = notEmptyLinked.removeLast();
-        assertEquals(notEmptyLinked.size(), 1);
-        assertEquals(testList.size(), notEmpty.size() - 1);
+        assertEquals(1, notEmptyLinked.size());
+        assertEquals(notEmpty.size() - 1, testList.size());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -68,32 +68,32 @@ public class ImmutableLinkedListTest extends ImmutableArrayListTest {
     @Test
     public void testAddLastNotEmpty(){
         ImmutableLinkedList testList = notEmptyLinked.addLast(4);
-        assertEquals(testList.get(notEmpty.size()), 4);
-        assertEquals(testList.size(), notEmpty.size() + 1);
+        assertEquals(4, testList.get(notEmpty.size()));
+        assertEquals(notEmpty.size() + 1, testList.size());
     }
 
     @Test
     public void testAddLastEmpty(){
         ImmutableLinkedList testList = emptyLinked.addLast(2);
-        assertEquals(emptyLinked.size(), 0);
-        assertEquals(testList.get(0), 2);
-        assertEquals(testList.size(), 1);
+        assertEquals(0, emptyLinked.size());
+        assertEquals(2, testList.get(0));
+        assertEquals(1, testList.size());
     }
 
     @Test
     public void testAddFirstNotEmpty(){
         ImmutableLinkedList testList = notEmptyLinked.addFirst(4);
-        assertEquals(notEmptyLinked.size(), 1);
-        assertEquals(testList.get(0), 4);
-        assertEquals(testList.size(), notEmptyLinked.size() + 1);
+        assertEquals(1, notEmptyLinked.size());
+        assertEquals(4, testList.get(0));
+        assertEquals(notEmptyLinked.size() + 1, testList.size());
     }
 
     @Test
     public void testAddFirstEmpty(){
         ImmutableLinkedList testList = emptyLinked.addLast(2);
-        assertEquals(emptyLinked.size(), 0);
-        assertEquals(testList.get(0), 2);
-        assertEquals(testList.size(), 1);
+        assertEquals(0, emptyLinked.size());
+        assertEquals(2, testList.get(0));
+        assertEquals(1, testList.size());
     }
 
     

@@ -23,57 +23,63 @@ public class ImmutableArrayListTest {
 
     @Test
     public void testInitEmpty(){
-        assertEquals(empty.size(), 0);
+        assertEquals(0, empty.size());
     }
 
     @Test
     public void testInitNotEmpty(){
-        assertEquals(notEmpty.size(), 1);
-        assertEquals(notEmpty.get(0), notEmptyElem);
+        assertEquals(1, notEmpty.size());
+        assertEquals(notEmptyElem, notEmpty.get(0));
     }
 
     @Test
     public void testAddToEmpty(){
         Object elem = 2;
         ImmutableList newList = empty.add(elem);
-        assertEquals(empty.size(), 0);
-        assertEquals(newList.size(), 1);
-        assertEquals(newList.get(newList.size() - 1), elem);
+        assertEquals(0, empty.size());
+        assertEquals(1, newList.size());
+        assertEquals(elem, newList.get(newList.size() - 1));
     }
 
     @Test
     public void testAddToNotEmpty(){
         Object elem = 2;
         ImmutableList newList = notEmpty.add(elem);
-        assertEquals(notEmpty.size(), 1);
-        assertEquals(newList.size(), 2 );
-        assertEquals(newList.get(newList.size() - 1), elem);
+        assertEquals(1, notEmpty.size());
+        assertEquals(2, newList.size());
+        assertEquals(elem, newList.get(newList.size() - 1));
     }
 
     @Test
     public void testAddAtIndex(){
         Object elem = 2;
         ImmutableList newList = notEmpty.add(0, elem);
-        assertEquals(notEmpty.size(), 1);
-        assertEquals(newList.size(), 2 );
-        assertEquals(newList.get(newList.size() - 1), notEmptyElem);
-        assertEquals(newList.get(0), elem);
+        assertEquals(1, notEmpty.size());
+        assertEquals(2, newList.size());
+        assertEquals(notEmptyElem, newList.get(newList.size() - 1));
+        assertEquals(elem, newList.get(0));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testInvalidIndexAdd(){
+    public void testInvalidIndexAddPositive(){
         Object elem = 2;
         notEmpty.add( 10, elem);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testInvalidIndexAddNegative(){
+        Object elem = 2;
+        notEmpty.add( -1, elem);
     }
 
     @Test
     public void testAddAllToEmpty(){
         Object[] elems = new Object[] {2, 4};
         ImmutableList newList = empty.addAll(elems);
-        assertEquals(empty.size(), 0);
-        assertEquals(newList.size(), elems.length);
+        assertEquals(0, empty.size());
+        assertEquals(elems.length, newList.size());
         for (int i = 0; i < elems.length; i++){
-            assertEquals(newList.get(i), elems[i]);
+            assertEquals(elems[i], newList.get(i));
         }
 
     }
@@ -82,37 +88,47 @@ public class ImmutableArrayListTest {
     public void testAddAllToNotEmpty(){
         Object[] elems = new Object[] {2, 4};
         ImmutableList newList = notEmpty.addAll(elems);
-        assertEquals(notEmpty.size(), 1);
-        assertEquals(newList.size(), elems.length + 1);
-        assertEquals(newList.get(0), notEmptyElem);
+        assertEquals(1, notEmpty.size());
+        assertEquals(elems.length + 1, newList.size());
+        assertEquals(notEmptyElem, newList.get(0));
         for (int i = 0; i < elems.length; i++){
-            assertEquals(newList.get(i + 1), elems[i]);
+            assertEquals(elems[i], newList.get(i + 1));
         }
-
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testInvalidIndexAddAll(){
+    public void testInvalidIndexAddAllPositive(){
         Object[] elems = new Object[] {2, 4};
         notEmpty.addAll(10, elems);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testInvalidIndexAddAllNegative(){
+        Object[] elems = new Object[] {2, 4};
+        notEmpty.addAll(-1, elems);
     }
 
     @Test
     public void testAddAllAtIndex(){
         Object[] elems = new Object[] {2, 4};
         ImmutableList newList = notEmpty.addAll(0, elems);
-        assertEquals(notEmpty.size(), 1);
-        assertEquals(newList.size(), elems.length + 1);
+        assertEquals(1, notEmpty.size());
+        assertEquals(elems.length + 1, newList.size());
         assertEquals(newList.get(newList.size() - 1), notEmptyElem);
         for (int i = 0; i < elems.length; i++){
-            assertEquals(newList.get(i), elems[i]);
+            assertEquals(elems[i], newList.get(i));
         }
 
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testInvalidGet(){
+    public void testInvalidGetPositive(){
         notEmpty.get(10);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testInvalidGetNegative(){
+        notEmpty.get(-1);
     }
 
     @Test
@@ -121,84 +137,94 @@ public class ImmutableArrayListTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testInvalidRemove(){
+    public void testInvalidRemovePositive(){
         notEmpty.remove(10);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testInvalidRemoveNegative(){
+        notEmpty.remove(-1);
     }
 
     @Test
     public void testRemove(){
         ImmutableList newList = notEmpty.remove(0);
-        assertEquals(notEmpty.size(), 1);
-        assertEquals(newList.size(), 0);
+        assertEquals(1, notEmpty.size());
+        assertEquals(0, newList.size());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testInvalidSet(){
+    public void testInvalidSetPositive(){
         notEmpty.set(10, 3);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testInvalidSetNegative(){
+        notEmpty.set(-1, 3);
     }
 
     @Test
     public void testSet(){
         Object elem = 4;
         ImmutableList newList = notEmpty.set(0, elem);
-        assertEquals(newList.get(0), elem);
-        assertEquals(notEmpty.get(0), notEmptyElem);
+        assertEquals(elem, newList.get(0));
+        assertEquals(notEmptyElem, notEmpty.get(0));
     }
 
     @Test
     public void testIndexOfNotFound(){
-        assertEquals(empty.indexOf(3), -1);
+        assertEquals(-1, empty.indexOf(3));
     }
 
     @Test
     public void testIndexOf(){
-        assertEquals(notEmpty.indexOf(notEmptyElem), 0);
+        assertEquals(1, notEmpty.add(100).indexOf(100));
     }
 
     @Test
     public void testSize(){
         Object[] elems = new Object[] {2, 4};
         ImmutableList newList = empty.addAll(elems);
-        assertEquals(newList.size(), elems.length);
-        assertEquals(newList.add(2).size(), elems.length + 1);
+        assertEquals(elems.length, newList.size());
+        assertEquals(elems.length + 1, newList.add(2).size());
     }
 
     @Test
     public void testClear(){
         ImmutableList newList = notEmpty.clear();
-        assertEquals(newList.size(), 0);
-        assertEquals(notEmpty.size(), 1);
+        assertEquals(0, newList.size());
+        assertEquals(1, notEmpty.size());
     }
 
     @Test
     public void testIsEmptyOnEmpty(){
-        assertEquals(empty.isEmpty(), true);
+        assertEquals(true, empty.isEmpty());
     }
 
     @Test
     public void testIsEmptyOnNotEmpty(){
-        assertEquals(notEmpty.isEmpty(), false);
+        assertEquals(false, notEmpty.isEmpty());
     }
 
     @Test
     public void testToArrayEmpty(){
-        assertArrayEquals(empty.toArray(), new Object[] {});
+        assertArrayEquals(new Object[] {}, empty.toArray());
     }
 
 
     @Test
     public void testToArrayNotEmpty(){
-        assertArrayEquals(notEmpty.toArray(), new Object[] {notEmptyElem});
+        assertArrayEquals(new Object[] {notEmptyElem}, notEmpty.toArray());
     }
 
     @Test
     public void testToStringEmpty(){
-        assertEquals(empty.toString(), "[]");
+        assertEquals("[]", empty.toString());
     }
 
     @Test
     public void testToStringNotEmpty(){
-        assertEquals(notEmpty.toString(), Arrays.toString(new Object[]{notEmptyElem}));
+        assertEquals(Arrays.toString(new Object[]{notEmptyElem}), notEmpty.toString());
     }
 
 

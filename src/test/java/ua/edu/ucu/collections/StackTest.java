@@ -22,15 +22,15 @@ public class StackTest {
     @Test
     public void testPushEmpty() {
         empty.push(3);
-        assertEquals(empty.size(), 1);
-        assertEquals(empty.peek(), 3);
+        assertEquals(1, empty.size());
+        assertEquals(3, empty.peek());
     }
 
     @Test
     public void testPushNotEmpty() {
         notEmpty.push(3);
-        assertEquals(notEmpty.size(), 2);
-        assertEquals(notEmpty.peek(), 3);
+        assertEquals(2, notEmpty.size());
+        assertEquals(3, notEmpty.peek());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -40,7 +40,7 @@ public class StackTest {
 
     @Test
     public void testPeekNotEmpty() {
-        assertEquals(notEmpty.peek(), notEmptyElem);
+        assertEquals(notEmptyElem, notEmpty.peek());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -50,18 +50,18 @@ public class StackTest {
 
     @Test
     public void testPopNotEmpty() {
-        assertEquals(notEmpty.pop(), notEmptyElem);
-        assertEquals(notEmpty.size(), 0);
+        assertEquals(notEmptyElem, notEmpty.pop());
+        assertEquals(0, notEmpty.size());
     }
 
     @Test
     public void testSizeEmpty() {
-        assertEquals(empty.size(), 0);
+        assertEquals(0, empty.size());
     }
 
     @Test
     public void testSizeNotEmpty() {
-        assertEquals(notEmpty.size(), 1);
+        assertEquals(1, notEmpty.size());
     }
     
 }

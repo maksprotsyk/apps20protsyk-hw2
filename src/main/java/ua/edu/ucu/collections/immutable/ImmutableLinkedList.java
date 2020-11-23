@@ -151,7 +151,7 @@ public class ImmutableLinkedList implements ImmutableList {
     public Object[] toArray() {
         Object[] array = new Object[size];
         iterator.restart();
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             array[i] = iterator.getNext();
         }
         return array;
